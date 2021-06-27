@@ -1,0 +1,25 @@
+.bodys {
+    background-image: url('image/undraw_medicine_b1ol.svg');
+    background-repeat: no-repeat;
+    background-position: 15rem;
+    background-position-x: right;
+    background-position-y: top;
+}
+
+.card-hedline-texts {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.hms {
+    font-size: 50px
+}
+
+.time {
+    text-align: center
+}
+
+.date {
+    font-size: 20px;
+}

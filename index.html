@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>Covid DashBoard LK</title>
 </head>
 
-<body onload="loadAPIData()">
+<body onload="loadAPIData()" class="bodys">
     <!-- navbar -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
@@ -29,10 +31,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-auto">
                     <div class="time">
-                        <span class="hms">11:52:45</span>
-                        <span class="ampm">pm</span>
+                        <span class="hms" id="sysDateTime"></span>
+                        <span class="hms" id="sysAmPm"></span>
                         <br>
-                        <span class="date">sunday 23 2021</span>
+                        <span class="date" id="currntDay"></span>
                     </div>
                 </div>
             </div>
@@ -45,13 +47,13 @@
                 <div class="col-sm">
                     <div class="card border-dark mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl Total Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title" id="local_total_cases">1850</h5>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title card-hedline-texts" id="local_total_cases">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_1"></p>
                         </div>
                     </div>
                 </div>
@@ -59,13 +61,13 @@
                 <div class="col-sm">
                     <div class="card border-primary mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl New Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title card-hedline-texts" id="local_new_cases">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_2"></p>
                         </div>
                     </div>
                 </div>
@@ -73,13 +75,13 @@
                 <div class="col-sm">
                     <div class="card border-info mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl Active Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-body text-info">
+                            <h5 class="card-title card-hedline-texts" id="local_active_cases">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_3"></p>
                         </div>
                     </div>
                 </div>
@@ -91,12 +93,12 @@
                     <div class="card border-success mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl Recoverd Cases</div>
                         <div class="card-body text-success">
-                            <h5 class="card-title">1850</h5>
+                            <h5 class="card-title card-hedline-texts" id="local_recovered">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_4"></p>
                         </div>
                     </div>
                 </div>
@@ -104,13 +106,13 @@
                 <div class="col-sm">
                     <div class="card border-warning mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl New Death Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-body text-warning">
+                            <h5 class="card-title card-hedline-texts" id="local_new_deaths">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_5"></p>
                         </div>
                     </div>
                 </div>
@@ -119,12 +121,12 @@
                     <div class="card border-danger mb-3" style="max-width: 18rem; max-height: 25rem;">
                         <div class="card-header">Loacl Deaths Cases</div>
                         <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                            <h5 class="card-title card-hedline-texts" id="local_deaths">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_6"></p>
                         </div>
                     </div>
                 </div>
@@ -138,42 +140,42 @@
             <div class="row" style="padding-top: 20px; padding-bottom:20px;">
                 <div class="col-sm">
                     <div class="card border-dark mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl Total Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-header">Global Total Cases</div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title card-hedline-texts" id="global_total_cases">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_7"></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm">
                     <div class="card border-primary mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl New Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-header">Global New Cases</div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title card-hedline-texts" id="global_new_cases">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_8"></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm">
                     <div class="card border-info mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl Active Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-header">Global Recoverd Cases</div>
+                        <div class="card-body text-info">
+                            <h5 class="card-title card-hedline-texts" id="global_recovered">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_9"></p>
                         </div>
                     </div>
                 </div>
@@ -181,55 +183,86 @@
             </div>
             <!-- Row 2 -->
             <div class="row" style="padding-top: 20px; padding-bottom:20px;">
-                <div class="col-sm">
-                    <div class="card border-success mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl Recoverd Cases</div>
-                        <div class="card-body text-success">
-                            <h5 class="card-title">1850</h5>
-                            <hr>
-
-                        </div>
-                        <div class="footer">
-                            <p class="text-muted">Last Update</p>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-sm">
                     <div class="card border-warning mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl New Death Cases</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                        <div class="card-header">Global New Death Cases</div>
+                        <div class="card-body text-warning">
+                            <h5 class="card-title card-hedline-texts" id="global_new_deaths">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_10"></p>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm">
                     <div class="card border-danger mb-3" style="max-width: 18rem; max-height: 25rem;">
-                        <div class="card-header">Loacl Deaths Cases</div>
+                        <div class="card-header">Global Deaths Cases</div>
                         <div class="card-body text-danger">
-                            <h5 class="card-title">1850</h5>
+                            <h5 class="card-title card-hedline-texts" id="global_deaths">1850</h5>
                             <hr>
 
                         </div>
                         <div class="footer">
-                            <p class="text-muted">Last Update</p>
+                            <p class="text-muted" style="text-align:center; font-size:11px;" id="update_date_11"></p>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm">
+
+                </div>
+
 
             </div>
         </div>
-    </div>
-    <script src="app.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+        <br>
+        <h3>Source & Developer</h3>
+        <hr>
+
+        <div class="container">
+            <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
+
+                <div class="col-6">
+                    <div class="card-deck">
+                        <div class="card" style="padding: 20px;">
+                            <img class="card-img-top" src="image/logo-hpb.png" style="width: 400px;" alt="logo-hpb">
+                            <div class="card-body">
+                                <h5 class="card-title">Source Details</h5>
+                                <p class="card-text"><a href="https://www.hpb.health.gov.lk/en">Health Promotion
+                                        Bureau</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <hr>
+                <div class="row no-gutters">
+                    <div class="col-12 col-sm-6 col-md-9">
+                        <p style="font-weight: 600;">
+                            &copy; Corona Dashboard - Live Update in Sri Lanka
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <span><i class="fab fa-dev "></i></span> Devaloped by
+                        <span>
+                            <a href="https://www.linkedin.com/in/theekshana-hariscandra-572ab520a/">
+                                Theekshana Harischandra
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="app.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 
 </html>
